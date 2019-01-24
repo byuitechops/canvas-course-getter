@@ -14,8 +14,8 @@ Filter by:
   
   Stretches:
     Filter by Items:
-      - Modules
+    - Modules
           Mod Items
-      - Quzzes
+    - Quzzes
           Quiz Questions
-      - Discussion Boards
+    - Discussion Boards
