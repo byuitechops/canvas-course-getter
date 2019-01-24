@@ -3,12 +3,12 @@ The end-all be-all wrapper for selecting (or filtering a CSV of) Canvas courses.
 
 1. Filter By Questions: 
   - String Input (Course Level, Course Code, Course Name, Course OU, Section SISID)
-  - Naming Convention (Department, College, Term, Dev, Pilot, Scaled)
-  - Account (including name and number) and Subaccount
+  - Naming Convention (Department, College, Term, Dev, Pilot, Scaled, Master, Block/Full)
+  - Account (including name and number) and Subaccount (Master, Course Counsel View, File Backup, Blueprint)
   - If a course has users (how many)
-  - Instructor
-  - Course Settings
-  - Term/Start date-End date
+  - Instructor (in enrollments)
+  - Course Settings (Term)
+  - Start date-End date
   - Course Status
   
 2. Stretches:
@@ -16,4 +16,8 @@ The end-all be-all wrapper for selecting (or filtering a CSV of) Canvas courses.
   - Modules -> Mod Items
   - Quzzes -> Quiz Questions
   - Discussion Boards
-  Filter by Courses that use LTI/Apps
+  - Filter by Courses that use LTI/Apps
+
+3. Description of the Defaults and Settings Objects
+ - Defaults
+ - Settings
