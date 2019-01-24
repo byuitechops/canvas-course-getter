@@ -11,13 +11,12 @@ The end-all be-all wrapper for selecting (or filtering a CSV of) Canvas courses.
   - Start date-End date
   - Course Status
   
-2. Stretches:
-  Additional Questions to Filter by Items in Course:
+. Additional Questions to Filter by Items in Course:
   - Modules -> Mod Items
   - Quzzes -> Quiz Questions
   - Discussion Boards
   - Filter by Courses that use LTI/Apps
 
-3. Description of the Defaults and Settings Objects
+2. Description of the Defaults and Settings Objects
  - Defaults
  - Settings
