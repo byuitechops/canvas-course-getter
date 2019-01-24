@@ -11,4 +11,11 @@ Filter by:
   - Course Settings
   - Term/Start date-End date
   - Course Status
-  - 
+  
+  Stretches:
+    Filter by Items:
+      - Modules
+          Mod Items
+      - Quzzes
+          Quiz Questions
+      - Discussion Boards
