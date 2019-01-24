@@ -13,7 +13,7 @@ Filter by:
   - Course Status
   
   Stretches:
-    Filter by Items:
+  Filter by Items:
   - Modules -> Mod Items
   - Quzzes -> Quiz Questions
   - Discussion Boards
