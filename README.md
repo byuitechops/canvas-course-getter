@@ -1,8 +1,7 @@
 # canvas-course-getter
 The end-all be-all wrapper for selecting (or filtering a CSV of) Canvas courses.
 
-Questions
-Filter by: 
+1. Filter By Questions: 
   - String Input (Course Level, Course Code, Course Name, Course OU, Section SISID)
   - Naming Convention (Department, College, Term, Dev, Pilot, Scaled)
   - Account (including name and number) and Subaccount
@@ -12,8 +11,9 @@ Filter by:
   - Term/Start date-End date
   - Course Status
   
-  Stretches:
-  Filter by Items:
+2. Stretches:
+  Additional Questions to Filter by Items in Course:
   - Modules -> Mod Items
   - Quzzes -> Quiz Questions
   - Discussion Boards
+  Filter by Courses that use LTI/Apps
