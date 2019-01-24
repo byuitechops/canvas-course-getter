@@ -1,4 +1,4 @@
-# canvas-course-getter
+# canvas-course-list-getter
 The end-all be-all wrapper for selecting (or filtering a CSV of) Canvas courses.
 
 1. Filter By Questions: 
