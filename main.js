@@ -3,57 +3,22 @@ const pLimit = require('p-limit');
 const input = require('./cli.js');
 const limit = pLimit(20);
 
-let apiBody = {
-    base: '',
-    account: '',
-    specific: ''
-};
+// choices:
+// let termInfo = [{name: '',id: ''};
+// let terms = canvas.get('/api/v1/accounts/1/terms')
+// terms.enrollment_terms.foreach(term => { termInfo.push({ name:term.name, id:term.id}) });
+// return termInfo.
+// let subAccounts = canvas.get('/api/v1/accounts/1/sub_accounts')
+// let coursesByTeacher = canvas.get(`/api/v1/accounts/1/courses/by_teachers[${name}]`)
 
-let accountId = '';
-let enrollments = {
-    teacher: true,
-    student: true,
-    ta: true,
-    observer: true,
-    designer: true
-};
-
-let name = '';
-
-const input = [
-    limit(() => caller(`/terms`)),
-    limit(() => caller(`/sub_accounts`)),
-    limit(() => caller(`/courses/by_teachers[${name}]`)),
-]
-
-async function caller(bas, acc, spe) {
-    if (bas !== null) {
-        apiBody.base = bas;
-    } else {
-        bas = '/api/v1/accounts';
-    }
-    if (acc !== null) {
-        apiBody.account = acc;
-    } else {
-        acc = '/1';
-    }
-    if (mod !== null) {
-        apiBody.specific = spe;
-    } else {
-        mod = '/courses';
-    }
-    let call = apiBody.base + apiBody.account + apiBody.specific;
+async function main() {
+    let teachers;
     try {
-        return await canvas.get(call);
+        teachers = await canvas.get('/api/v1/accounts/1/users?include[]=email&role_filter_id=4');
     } catch (err) {
         console.error(err);
     }
-}
-
-async function getAccounts() {
-    return await canvas.get(apiBody.base)
-}
-
-function main() {
-
+    console.log(teachers);
 };
+
+main();

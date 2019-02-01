@@ -19,7 +19,7 @@ function asker() {
      */
     inquirer.prompt([
             /* Pass your questions in here */
-            {
+            { //First Question
                 type: 'rawlist', //Multiselect? try 
                 name: 'filterSelect',
                 message: 'Please choose your filter(s) by pressing Spacebar, press Enter once you have finished:',
@@ -53,8 +53,7 @@ function asker() {
                         return true
                     } else return "That answer did not meet the criteria, try again." //use error message
                 }
-            }
-
+            },
             {
                 type: 'autocomplete',
                 name: 'filterByUsers',
@@ -66,7 +65,7 @@ function asker() {
 
                 },
                 choices: function (answers) { //programmatically get a list
-
+                    let teachers = canvas.get('/api/v1/accounts/1/users?include[]=email&role_filter_id=4');
                 },
                 validate: function (answer) {
 
