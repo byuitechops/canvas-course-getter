@@ -1,0 +1,33 @@
+{
+  "name": "init",
+  "version": "1.0.0",
+  "description": "The end-all be-all wrapper for selecting (or filtering a CSV of) Canvas courses.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byuitechops/canvas-course-list-getter.git"
+  },
+  "keywords": [
+    "canvas",
+    "course",
+    "list",
+    "getter"
+  ],
+  "author": "Seth Farr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/byuitechops/canvas-course-list-getter/issues"
+  },
+  "homepage": "https://github.com/byuitechops/canvas-course-list-getter#readme",
+  "dependencies": {
+    "canvas-api-wrapper": "^3.3.5",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
+    "p-limit": "^2.1.0"
+  },
+  "devDependencies": {}
+}
