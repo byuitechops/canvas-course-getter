@@ -1,17 +1,18 @@
 const canvas = require('canvas-api-wrapper');
+
+const input = require('./input.js');
+const output = require('./output.js');
+
 const pLimit = require('p-limit');
-const input = require('./cli.js');
 const limit = pLimit(20);
 
-// choices:
-// let termInfo = [{name: '',id: ''};
-// let terms = canvas.get('/api/v1/accounts/1/terms')
-// terms.enrollment_terms.foreach(term => { termInfo.push({ name:term.name, id:term.id}) });
-// return termInfo.
-// let subAccounts = canvas.get('/api/v1/accounts/1/sub_accounts')
-// let coursesByTeacher = canvas.get(`/api/v1/accounts/1/courses/by_teachers[${name}]`)
-
 async function main() {
+    driver1();
+    driver2();
+    
+};
+
+function driver1() {
     let teachers;
     try {
         teachers = await canvas.get('/api/v1/accounts/1/users?include[]=email&role_filter_id=4');
@@ -19,6 +20,10 @@ async function main() {
         console.error(err);
     }
     console.log(teachers);
-};
+}
+
+function driver2() {
+
+}
 
 main();
