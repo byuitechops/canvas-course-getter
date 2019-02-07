@@ -177,11 +177,11 @@ Use ```GET /api/v1/accounts/1/courses/enrollment_type[teacher, student, ta, obse
 
 
 ### Filter by Other
-####TODO create way for user to provide their own filter file that will handle their own API calling.
+#### TODO create way for user to provide their own filter file that will handle their own API calling.
 
 ---
 
-##TODO
+## TODO
 Figure out how to ensure no API call gets asked twice. Any function that makes an API call needs to be overwritten to something that just returns the result of the API call instead.
 ```javascript
 function main () {
