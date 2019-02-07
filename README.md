@@ -3,7 +3,6 @@ The end-all be-all wrapper for filtering a list of Canvas courses.
 
 ## How to Install
 
----
 Standard Install
 
 1. Clone this repository:
@@ -26,7 +25,6 @@ Standard Install
 ---
 ## How to use this wrapper
 
----
 This wrapper is designed to provide dynamic, easily maintained access to the Canvas API calls neccessary to select specific courses based on certain criteria. It uses inquirer to get input from the user in order to select certain filters, makes the requested calls, and outputs an array of canvas course objects. 
 ### Available Filters are:
 * Filter by Sub-Account
@@ -46,7 +44,6 @@ The objective of the settings object is to allow the user to select how the CLI 
 ---
 ## File Structure (Where is What)
 
----
 The files are arranged thusly:
 #### Main -> (Output -> Filters, Input -> Questions -> Question_Modules -> (FunctionHelpers, Template, QuestionSelectTeacher, etc.))
 * input.js will handle taking in all defaults, settings and the inquirer answer hash.
@@ -151,7 +148,6 @@ NOW we're finally ready to begin programming the filter itself. We do this by cr
 ---
 ## Description of Filters
 
----
 ### Filter by Sub-Account
 Uses ```GET /api/v1/accounts/1/sub_accounts``` to get live list of subaccounts,
 Then ```GET /api/v1/accounts/1/courses/by_subaccounts[<subaccount>]``` to get the courses under the specified sub-account. 
