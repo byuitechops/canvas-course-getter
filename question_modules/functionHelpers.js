@@ -8,8 +8,11 @@ module.exports = {
         whenTerm: whenTerm
     },
     defaultChoice: {
-        defSet: input.settings.foreach(() => {
-            //check settings to see what ought to be selected as the default, 
+        //This function will look at the defaults object to see what the default
+        //value ought to be. If you did not provide one, but still used this, 
+        //it will select a default value.
+        defSet: input.defaults.foreach(() => {
+            //check defaults to see what ought to be selected as the default, 
             //else select the predetermined default values.
         })
     },
@@ -79,7 +82,7 @@ function teacherChoices() {
 function termChoices() {
     return answers => {
         let terms = gatherData.terms;
-        //TODO format the terms API call so it can be displayed in a nice list
+        //TODO format the terms API call so it can be displayed in an array
         return terms;
     };
 };
@@ -95,7 +98,7 @@ function selectFilterChoices() {
             'Filter by Enrollment Types',
             'Filter by Course Status',
             new inquirer.Separator(),
-            "Filter by other"
+            "Filter by Other"
         ];
         return choices;
     };
@@ -107,7 +110,8 @@ function selectFilterChoices() {
  */
 
 //Validate there is an answer given.
-//TODO find out how to make the verifications know which 'answer' out of the 'answers' hash to verify
+//TODO find out how to make the verifications know which 'answer' out of the 
+//'answers' hash to verify
 function noBlank() {
     return answer => {
         if (answer.length > 1) {
@@ -118,7 +122,8 @@ function noBlank() {
 };
 
 //Validate that the chosen answer matches one in the given list.
-//TODO find out how to make the verifications know which 'answer' out of the 'answers' hash to verify
+//TODO find out how to make the verifications know which 'answer' out of the 
+//'answers' hash to verify
 function checkAnswer(key, check) {
     return answer => {
         return answer[key] === check;

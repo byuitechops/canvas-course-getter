@@ -20,10 +20,27 @@ function getTeachers() {
 }
 
 function getTerms() {
-    let terms = canvas.get('/api/v1/accounts/1/terms')
-    return terms
+    return () => {
+        let terms
+        try {
+            terms = canvas.get('/api/v1/accounts/1/terms');
+        } catch (err) {
+            console.error(err);
+        }
+        return terms;
+    }
 }
 
 function getSubAccounts() {
-
+    return () => {
+        let subAccounts
+        try {
+            subAccounts = canvas.get('GET /api/v1/accounts/{apiBody.account}/sub_accounts');
+        } catch (err) {
+            console.error(err);
+        }
+        return subAccounts;
+    }
+    
+    
 }

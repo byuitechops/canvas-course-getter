@@ -1,13 +1,15 @@
 /*
- * This file will handle making and formatting the API calls 
+ * This file will formatting the results of the API calls 
  * specified by the user, returning either a DSV or a JSON 
  * depending on the user's preference. 
  */
 
-//Make all the API calls 
-function makeCalls() {
-
+module.exports = {
+    display: display,
+    toDSV: toDSV,
+    toJSON: toJSON
 }
+
 
 //Simply console.log the resulting courses as produced by the API call
 function display() {

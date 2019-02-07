@@ -6,7 +6,7 @@
  */
 
 const inquirer = require("inquirer");
-let questions = require('questions.js');
+let askQuestions = require('questions.js');
 
 module.exports = {
     /*
@@ -14,8 +14,9 @@ module.exports = {
      * for default values. Answers specified in the settings object 
      * will be verified by still asking the question.
      */
-    settings: settings = {
-        //TODO after questions: write the real names for the default values the user can associate with the corresponding questions
+    defaults: defaults = {
+        //TODO after questions: write the real names for the default values the
+        // user can associate with the corresponding questions
         selectFilter: {
             a: 'Setting1',
             b: 'Setting1.1',
@@ -39,17 +40,19 @@ module.exports = {
      * will allow the user to choose whether to use an existing .dsv
      * instead of Canvas for the course list.
      */
-    options: options = {
+    settings: settings = {
         selectFilter: {
-            ask: true
+            ask: true,
+            value: ""
         },
         selectTeacher: {
-            ask: true
+            ask: true,
+            value: ""
         },
         selectTerm: {
-            ask: true
-        },
-    }
-}
-
-let apiCalls = questions.ask();
+            ask: true,
+            value: ""
+        }
+    },
+    apiCalls: askQuestions()
+};

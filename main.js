@@ -7,23 +7,23 @@ const pLimit = require('p-limit');
 const limit = pLimit(20);
 
 async function main() {
-    driver1();
-    driver2();
-    
+    var callList = input.apiCalls
+    var courses = output.makeCalls(callList);
+    output.display(courses);
 };
 
-function driver1() {
-    let teachers;
-    try {
-        teachers = await canvas.get('/api/v1/accounts/1/users?include[]=email&role_filter_id=4');
-    } catch (err) {
-        console.error(err);
-    }
-    console.log(teachers);
-}
+// function test1() {
+//     let teachers;
+//     try {
+//         teachers = await canvas.get('/api/v1/accounts/1/users?include[]=email&role_filter_id=4');
+//     } catch (err) {
+//         console.error(err);
+//     }
+//     console.log(teachers);
+// }
 
-function driver2() {
+// function test2() {
 
-}
+// }
 
 main();

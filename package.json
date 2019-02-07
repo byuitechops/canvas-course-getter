@@ -15,7 +15,8 @@
     "canvas",
     "course",
     "list",
-    "getter"
+    "getter",
+    "inquirer"
   ],
   "author": "Seth Farr",
   "license": "MIT",
