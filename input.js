@@ -5,9 +5,6 @@
  * array of API calls to make.
  */
 
-const inquirer = require("inquirer");
-let askQuestions = require('questions.js');
-
 module.exports = {
     /*
      * The setting object is for deciding what values should be chosen
@@ -53,6 +50,5 @@ module.exports = {
             ask: true,
             value: ""
         }
-    },
-    apiCalls: askQuestions()
+    }
 };
