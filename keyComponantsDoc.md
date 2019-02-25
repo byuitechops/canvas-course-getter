@@ -20,13 +20,12 @@ Getting lists of Canvas courses can be difficult, on account of the many API cal
 
 #### Source of Inputs
 
-Paragraph of how to get inputs. From who? From where: Slack, email, server...? This also includes user selected options at runtime. How will we know what options to select? For example, in conversion tool, you'd follow the values on the Trello Board. It would also include the steps to get access to the information you need, such as getting added to a Trello Board, or access to a server.
-
 The primary source of inputs will be from the user during runtime. Additional inputs may be entered via the Defaults and Settings objects within the code itself. The options will be given to the user via the CLI, some of those options will be obtained from Canvas via API, some will be prepopulated (as they are unchanging) from Canvas. 
 
 #### Definition of Inputs
 
 the Defaults object will look like this:
+```
   defaults 
     questionName {
       ask: boolean,
@@ -37,7 +36,7 @@ the Defaults object will look like this:
       value: var
     ...
     }
-    
+```
 ---
 
 ### Output Requirements
