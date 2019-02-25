@@ -35,7 +35,7 @@ function getSubAccounts() {
     return () => {
         let subAccounts
         try {
-            subAccounts = canvas.get('GET /api/v1/accounts/1/sub_accounts');
+            subAccounts = canvas.get('/api/v1/accounts/1/sub_accounts');
         } catch (err) {
             console.error(err);
         }

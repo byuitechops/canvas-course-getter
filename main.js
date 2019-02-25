@@ -3,11 +3,10 @@ const canvas = require('canvas-api-wrapper');
 const input = require('./input.js');
 const output = require('./output.js');
 
-const pLimit = require('p-limit');
-const limit = pLimit(20);
+const Filters = require('./filters.js')
 
 function main() {
-
-};
+    Filters.filterSubAccounts.doFilter;
+}
 
 main();
