@@ -1,5 +1,5 @@
 # Project Capture Document for canvas-course-list-getter
-#### Seth Farr
+#### Author: Seth Farr
 
 ## Background
 Getting lists of Canvas courses can be difficult, on account of the many API calls and filters it may require to get exactly the right type of courses. The purpose of this tool is to provide streamlined, optimized, maintainable and repeatable access to Canvas courses.
