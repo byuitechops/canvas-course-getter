@@ -7,10 +7,8 @@ Getting lists of Canvas courses can be difficult, on account of the many API cal
 -----
 
 ## Objectives
-1. Provide the user with a list of selectable filters to choose from. (Inquirer)
-1.5 Provide the user with a way to make special rules to allow for repeatable/bulk use.
-2. Determine what the most efficient API call is to get courses by user's specification.
-3. Make the API calls and return a list of the courses matching the requested filtration. (canvas-api-wrapper)
+1. Provide the user with a easy access to a list of selectable filters to choose from.
+2. Make the API calls and return a list of the courses matching the requested filtration.
 
 -----
 
