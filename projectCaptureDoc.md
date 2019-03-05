@@ -22,9 +22,9 @@ The primary source of inputs will be from the user during runtime. Additional in
 
 #### Definition of Inputs
 
-the Defaults object will look like this:
+the Settings object will look like this:
 ```
-  defaults 
+  settings 
     questionName {
       ask: boolean,
       value: var
@@ -48,105 +48,7 @@ The user will be given an option to receive the output as CSV or JSON in the def
 
 List here a type definition for each output? For example, if the changes are directly to the LMS, list all changes that occur. If it is a CSV define the column names. If it is a JSON, give an example of the JSON structure. 
 
-The output will take the form of a Canvas Course object with varying keys:
-```javascript
-{
-  // the unique identifier for the course
-  "id": 370663,
-  // the SIS identifier for the course, if defined. This field is only included if
-  // the user has permission to view SIS information.
-  "sis_course_id": null,
-  // the UUID of the course
-  "uuid": "WvAHhY5FINzq5IyRIJybGeiXyFkG3SqHUPb7jZY5",
-  // the integration identifier for the course, if defined. This field is only
-  // included if the user has permission to view SIS information.
-  "integration_id": null,
-  // the unique identifier for the SIS import. This field is only included if the
-  // user has permission to manage SIS information.
-  "sis_import_id": 34,
-  // the full name of the course
-  "name": "InstructureCon 2012",
-  // the course code
-  "course_code": "INSTCON12",
-  // the current state of the course one of 'unpublished', 'available',
-  // 'completed', or 'deleted'
-  "workflow_state": "available",
-  // the account associated with the course
-  "account_id": 81259,
-  // the root account associated with the course
-  "root_account_id": 81259,
-  // the enrollment term associated with the course
-  "enrollment_term_id": 34,
-  // the grading standard associated with the course
-  "grading_standard_id": 25,
-  // the date the course was created.
-  "created_at": "2012-05-01T00:00:00-06:00",
-  // the start date for the course, if applicable
-  "start_at": "2012-06-01T00:00:00-06:00",
-  // the end date for the course, if applicable
-  "end_at": "2012-09-01T00:00:00-06:00",
-  // the course-set locale, if applicable
-  "locale": "en",
-  // A list of enrollments linking the current user to the course. for student
-  // enrollments, grading information may be included if include[]=total_scores
-  "enrollments": null,
-  // optional: the total number of active and invited students in the course
-  "total_students": 32,
-  // course calendar
-  "calendar": null,
-  // the type of page that users will see when they first visit the course -
-  // 'feed': Recent Activity Dashboard - 'wiki': Wiki Front Page - 'modules':
-  // Course Modules/Sections Page - 'assignments': Course Assignments List -
-  // 'syllabus': Course Syllabus Page other types may be added in the future
-  "default_view": "feed",
-  // optional: user-generated HTML for the course syllabus
-  "syllabus_body": "<p>syllabus html goes here</p>",
-  // optional: the number of submissions needing grading returned only if the
-  // current user has grading rights and include[]=needs_grading_count
-  "needs_grading_count": 17,
-  // optional: the enrollment term object for the course returned only if
-  // include[]=term
-  "term": null,
-  // optional (beta): information on progress through the course returned only if
-  // include[]=course_progress
-  "course_progress": null,
-  // weight final grade based on assignment group percentages
-  "apply_assignment_group_weights": true,
-  // optional: the permissions the user has for the course. returned only for a
-  // single course and include[]=permissions
-  "permissions": {"create_discussion_topic":true,"create_announcement":true},
-  "is_public": true,
-  "is_public_to_auth_users": true,
-  "public_syllabus": true,
-  "public_syllabus_to_auth": true,
-  // optional: the public description of the course
-  "public_description": "Come one, come all to InstructureCon 2012!",
-  "storage_quota_mb": 5,
-  "storage_quota_used_mb": 5,
-  "hide_final_grades": false,
-  "license": "Creative Commons",
-  "allow_student_assignment_edits": false,
-  "allow_wiki_comments": false,
-  "allow_student_forum_attachments": false,
-  "open_enrollment": true,
-  "self_enrollment": false,
-  "restrict_enrollments_to_course_dates": false,
-  "course_format": "online",
-  // optional: this will be true if this user is currently prevented from viewing
-  // the course because of date restriction settings
-  "access_restricted_by_date": false,
-  // The course's IANA time zone name.
-  "time_zone": "America/Denver",
-  // optional: whether the course is set as a Blueprint Course (blueprint fields
-  // require the Blueprint Courses feature)
-  "blueprint": true,
-  // optional: Set of restrictions applied to all locked course objects
-  "blueprint_restrictions": {"content":true,"points":true,"due_dates":false,"availability_dates":false},
-  // optional: Sets of restrictions differentiated by object type applied to
-  // locked course objects
-  "blueprint_restrictions_by_object_type": {"assignment":{"content":true,"points":true},"wiki_page":{"content":true}}
-}
-```
+The output will take the form of a Canvas Course object with varying keys. See https://canvas.instructure.com/doc/api/courses.html for more information about the Canvas Course Object.
 
 ---
 
@@ -160,96 +62,96 @@ CLI with Inquirer
 
 ```
 Please choose your filter(s) by pressing Spacebar, press Enter once you have finished
-		Filter by Sub-Account (sub-accounts provided) 
+		Filter by Sub-Account (autocorrect) 
 		{
 		Check the Sub-Account(s) you would like to filter by, 
 		or type the account numbers seperated by commas:
 			{
-			Online (5)
-				Master Courses (42)
-					Course Council (46)
-					File Backup (100)
-				Semeseter Blueprint (43)
-					Scaled (44)
-					Archived (45)
-			Campus (7)
-				Campus Instructor Training (35)
-			Sandbox (8)
-			Development (13)
-				Canvas API test (17)
-				Workday Tests (18)
-				Conversion Tool (19)
-				Canvas Gauntlets (27)
-				EnglishConnect (41)
-				Sub-Account Testing (112)
-				White Glove Migration Courses (114)
-				Course Removal Testing (120)
-			Pathway (24)
-				Master Courses (39)
-					Course Council (47)
-					File Backup (102)
-				Semester Blueprint (106)
-					Archived (108)
-					Scaled (110)
-					Missionary Review Courses (118)
-			Non-Academic (25)
-				Devotional (96)
-				Human Resources (98)
-				Online Instruction (104)
-			Manually Created Courses (26)
-			BYUI (48)
-				Accounting (49)
-				Economics (50)
-				Applied Plant Science (51)
-				Sociology & Social Work (52)
-				Design & Const Mgmt (53)
-				Art (54)
-				Animal & Food Science (55)
-				Engineering Technology (56)
-				Management (57)
-				Marketing (57)
-				Finance (59)
-				Biology (60)
-				Mechanical & Civil Eng (61)
-				Chemistry (62)
-				Home & Family (63)
-				Lang & Intnl Studies (64)
-				Computer Info Technology (65)
-				Communication (66)
-				Computer Sci & Eng (67)
-				Theatre and Dance (68)
-				Teacher Education (69)
-				English (70)
-				Human Performance & Rec (71)
-				Foundations (72)
-				Mathematics (73)
-				Religious Education (74)
-				Interdiscip. Studies (75)
-				Hist Geog & Polisci (76)
-				Geology (77)
-				Humanities & Philosophy (78)
-				General Studies (79)
-				Health Services (80)
-				Liberary (81)
-				ROTC (82)
-				Music (83)
-				Nursing (84)
-				Physics (85)
-				Psychology (86)
+			Online (id: 5)
+				Master Courses (id: 42)
+					Course Council (id: 46)
+					File Backup (id: 100)
+				Semeseter Blueprint (id: 43)
+					Scaled (id: 44)
+					Archived id: 45)
+			Campus (id: 7)
+				Campus Instructor Training (id: 35)
+			Sandbox (id: 8)
+			Development (id: 13)
+				Canvas API test (id: 17)
+				Workday Tests (id: 18)
+				Conversion Tool (id: 19)
+				Canvas Gauntlets (id: 27)
+				EnglishConnect (id: 41)
+				Sub-Account Testing (id: 112)
+				White Glove Migration Courses (id: 114)
+				Course Removal Testing (id: 120)
+			Pathway (id: 24)
+				Master Courses (id: 39)
+					Course Council (id: 47)
+					File Backup (id: 102)
+				Semester Blueprint (id: 106)
+					Archived (id: 108)
+					Scaled (id: 110)
+					Missionary Review Courses (id: 118)
+			Non-Academic (id: 25)
+				Devotional (id: 96)
+				Human Resources (id: 98)
+				Online Instruction (id: 104)
+			Manually Created Courses (id: 26)
+			BYUI (id: 48)
+				Accounting (id: 49)
+				Economics (id: 50)
+				Applied Plant Science (id: 51)
+				Sociology & Social Work (id: 52)
+				Design & Const Mgmt (id: 53)
+				Art (id: 54)
+				Animal & Food Science (id: 55)
+				Engineering Technology (id: 56)
+				Management (id: 57)
+				Marketing (id: 57)
+				Finance (id: 59)
+				Biology (id: 60)
+				Mechanical & Civil Eng (id: 61)
+				Chemistry (id: 62)
+				Home & Family (id: 63)
+				Lang & Intnl Studies (id: 64)
+				Computer Info Technology (id: 65)
+				Communication (id: 66)
+				Computer Sci & Eng (id: 67)
+				Theatre and Dance (id: 68)
+				Teacher Education (id: 69)
+				English (id: 70)
+				Human Performance & Rec (id: 71)
+				Foundations (id: 72)
+				Mathematics (id: 73)
+				Religious Education (id: 74)
+				Interdiscip. Studies (id: 75)
+				Hist Geog & Polisci (id: 76)
+				Geology (id: 77)
+				Humanities & Philosophy (id: 78)
+				General Studies (id: 79)
+				Health Services (id: 80)
+				Liberary (id: 81)
+				ROTC (id: 82)
+				Music (id: 83)
+				Nursing (id: 84)
+				Physics (id: 85)
+				Psychology (id: 86)
 			}
-		Check to:
+		Check to: (confirm)
 			{
 			Include all children of selected Sub-Account(s)
 			}
 		}
-		Filter by Term (list of terms provided)
+		Filter by Term (autocorrect)
 		Check the Term(s) you would like to filter by:
 		{
 			Default Term
 			Spring 2019
 			etc.
 		}
-		Filter by Course State (created, claimed, available, completed, deleted, all)
+		Filter by Course State (created, claimed, available, completed, deleted, all) (autocorrect)
 		Check the Course State(s) you would like to filter by:
 		{
 			created 
@@ -258,7 +160,7 @@ Please choose your filter(s) by pressing Spacebar, press Enter once you have fin
 			completed
 			deleted
 		}
-		Filter by Course Type
+		Filter by Course Type (input)
 		Check the Course Type(s) you would like to filter by:
 		{
 			blueprint
@@ -269,7 +171,7 @@ Please choose your filter(s) by pressing Spacebar, press Enter once you have fin
 		{
 			Enter the teacher's name(s) you would like to filter by (first and last name):
 		}
-		Filter by Enrollment Types
+		Filter by Enrollment Types (input)
 		Check the Enrollment Type(s) you would like to filter by:
 		{
 			teacher
