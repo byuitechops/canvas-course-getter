@@ -43,19 +43,19 @@ The objective of the settings object is to allow the user to select how the CLI 
 Any time a new filter must be created, first create a new filter within the filters folder, providing this:
 `Filter('name', getQuestions(), null, '', ['includes'], (function), (function))`
 
-name must be the same in both the settings object and the filter itself. It must also be an element of the message of the choices of the selectFilters.js question object.
+* name must be the same in both the settings object and the filter itself. It must also be an element of the message of the choices of the selectFilters.js question object.
 
-getQuestions simplly needs to return the filter's questions (because the object tends to be quite large, and sometimes the 'choices' attribute requires an additional function such as `searchSubAccounts` or `searchTerms`)
+* getQuestions simplly needs to return the filter's questions (because the object tends to be quite large, and sometimes the 'choices' attribute requires an additional function such as `searchSubAccounts` or `searchTerms`)
 
-answers is left `null` because the value is not known until the questions are asked.
+* answers is left `null` because the value is not known until the questions are asked.
 
-queryBy is the string found in the canvas API documentation that will need to be used by the filter (by_subaccount, enrollment_term_id, etc.)
+* queryBy is the string found in the canvas API documentation that will need to be used by the filter (by_subaccount, enrollment_term_id, etc.)
 
-queryInclude is similar to the queryBy, only it will be used to filter courses after the API call has been made.
+* queryInclude is similar to the queryBy, only it will be used to filter courses after the API call has been made.
 
-getAnswers is a function that will return the answers (after the questions have been asked) in the correct format (such as removing the ID from the string using regex -See filterSubAccount)
+* getAnswers is a function that will return the answers (after the questions have been asked) in the correct format (such as removing the ID from the string using regex -See filterSubAccount)
 
-doFilter is a function that will take in a list of courses, run a .filter on them, seeing if the courses contain the queryInclude of the filter, returning true if they do, false if not.
+* doFilter is a function that will take in a list of courses, run a .filter on them, seeing if the courses contain the queryInclude of the filter, returning true if they do, false if not.
 
 
 ## Description of Filters
