@@ -1,11 +1,14 @@
-class Filter {
-    constructor(name, apiCall) {
+/*
+ * The base object to unify the data needed by the program
+ */
+module.exports = class Filter {
+    constructor(name, questions, answers, queryBy, queryInclude, getAnswers, doFilter) {
         this.name = name;
-        this.apiCall = apiCall;
-    }
-    doFilter(filter) {
-        return filter();
+        this.questions = questions;
+        this.answers = answers;
+        this.queryBy = queryBy;
+        this.queryInclude = queryInclude;
+        this.getAnswers = getAnswers;
+        this.doFilter = doFilter;
     }
 }
-
-module.exports = Filter;
