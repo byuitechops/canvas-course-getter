@@ -39,6 +39,7 @@ The user can either use the CLI to choose the inputs, or use the settings object
 ### Settings Object: 
 The objective of the settings object is to allow the user to select how the CLI behaves (i.e. what questions it asks, what the default values are). The 'ask' attribute, if true, will ask the sepcified question. If false, the question will automatically enter the 'value' without asking the question in the CLI.
 
+
 ### Making Additions
 Any time a new filter must be created, first create a new filter within the filters folder, providing this:
 `Filter('name', getQuestions(), null, '', ['includes'], (function), (function))`
@@ -46,6 +47,7 @@ Any time a new filter must be created, first create a new filter within the filt
 * name must be the same in both the settings object and the filter itself. It must also be an element of the message of the choices of the selectFilters.js question object.
 
 * getQuestions simplly needs to return the filter's questions (because the object tends to be quite large, and sometimes the 'choices' attribute requires an additional function such as `searchSubAccounts` or `searchTerms`)
+
 
 * answers is left `null` because the value is not known until the questions are asked.
 
@@ -98,6 +100,7 @@ Use ```GET /api/v1/accounts/1/courses/enrollment_type[]=teacher, student, ta, ob
 
 ### Filter by Course String Value (type: 'input')
 Use  ```GET /api/v1/accounts/1/courses/search_term=<string>```
+
 
 ## TODO
 Finish the Course State, Course Type, Teacher, Enrollment Type and String Value filters
