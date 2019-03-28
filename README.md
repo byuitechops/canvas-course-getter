@@ -50,8 +50,11 @@ Any time a new filter must be created, first create a new filter within the filt
 
 #### Types
 autoCheck is used for mutiselects that have a lot of values to choose from.
+
 lists are used for single value selects from finite answers
+
 checkboxes are used for multiselects with fewer values
+
 input is used when the criteria must match the user's desired value
 
 ---
