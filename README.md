@@ -25,6 +25,8 @@ Standard Install
 ---
 ## How to use this wrapper
 
+
+Update this section:
 This wrapper is designed to provide dynamic, easily maintained access to the Canvas API calls neccessary to select specific courses based on certain criteria. It uses inquirer to get input from the user in order to select certain filters, makes the requested calls, and outputs an array of canvas course objects. 
 ### Available Filters are:
 * Filter by Sub-Account
