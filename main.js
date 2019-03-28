@@ -1,4 +1,5 @@
 const selectFilters = require('./selectFilters'),
+    getOutput = require('./getOutput'),
     canvas = require('canvas-api-wrapper'),
     inquirer = require('inquirer'),
     settings = require('./settings'),
@@ -23,10 +24,12 @@ async function main(filterListFull, settings) {
     answers = await askQuestions(questions);
     assignAnswers(filterList, answers);
     courses = await makeAPIURL(filterList);
-    console.log(courses);
+    //the code below hasn't been implemented, becuase none of the filters created at
+    //this point have a post-API filter. Once one is made, simply uncomment the code.
     // return courses.filter(filterList.map(filterObj => {
     //     return filterObj.doFilter(courses);
     // }));
+    getOutput(courses);
 }
 
 /*
