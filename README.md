@@ -26,8 +26,6 @@ Standard Install
 ## How to use this wrapper
 Include this wrapper as a way to easily get either a JSON, CSV, or merely a list of Canvas Course Objects as a return value. This wrapper will run inquirer as a means to ask the user what kind of filters they would like to apply, then construct a canvas.GET, formatting the user's inputs accordingly.
 
-Update this section:
-This wrapper is designed to provide dynamic, easily maintained access to the Canvas API calls neccessary to select specific courses based on certain criteria. It uses inquirer to get input from the user in order to select certain filters, makes the requested calls, and outputs an array of canvas course objects. 
 ### Available Filters are:
 * Filter by Sub-Account
 * Filter by Term
