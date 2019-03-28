@@ -24,6 +24,7 @@ Standard Install
     ``` 
 ---
 ## How to use this wrapper
+Include this wrapper as a way to easily get either a JSON, CSV, or merely a list of Canvas Course Objects as a return value. This wrapper will run inquirer as a means to ask the user what kind of filters they would like to apply, then construct a canvas.GET, formatting the user's inputs accordingly.
 
 ### Available Filters are:
 * Filter by Sub-Account
@@ -33,64 +34,73 @@ Standard Install
 * Filter by Teacher
 * Filter by Enrollment Types
 * Filter by Course Status
-* Filter by Other
-The user can either use the CLI to choose the inputs, or use the settings and options objects to specify default answers and how the questions with default answers will behave. Additionally, the user may provide a CSV to read in to further reduce the courses being filtered.
-### Defaults Object: 
-This object allows you to put in string values for what choices you would like initially selected. This requires that the user be familiar enough with the format of the choices to be able either know the available choices, or the potential ones (i.e. selecting a teacher's name).
-### Settings Object: 
-The objective of the settings object is to allow the user to select how the CLI behaves (i.e. what questions it asks, what type of input it expects, what kind of output it produces, etc.)
+The user can either use the CLI to choose the inputs, or use the settings object to specify default answers and how the questions with default answers will behave.
 
-## File Structure (Where is What)
+### Settings Object: 
+The objective of the settings object is to allow the user to select how the CLI behaves (i.e. what questions it asks, what the default values are). The 'ask' attribute, if true, will ask the sepcified question. If false, the question will automatically enter the 'value' without asking the question in the CLI.
+
 
 ### Making Additions
+Any time a new filter must be created, first create a new filter within the filters folder, providing this:
+`Filter('name', getQuestions(), null, '', ['includes'], (function), (function))`
+
+* name must be the same in both the settings object and the filter itself. It must also be an element of the message of the choices of the selectFilters.js question object.
+
+* getQuestions simplly needs to return the filter's questions (because the object tends to be quite large, and sometimes the 'choices' attribute requires an additional function such as `searchSubAccounts` or `searchTerms`)
+
+
+* answers is left `null` because the value is not known until the questions are asked.
+
+* queryBy is the string found in the canvas API documentation that will need to be used by the filter (by_subaccount, enrollment_term_id, etc.)
+
+* queryInclude is similar to the queryBy, only it will be used to filter courses after the API call has been made.
+
+* getAnswers is a function that will return the answers (after the questions have been asked) in the correct format (such as removing the ID from the string using regex -See filterSubAccount)
+
+* doFilter is a function that will take in a list of courses, run a .filter on them, seeing if the courses contain the queryInclude of the filter, returning true if they do, false if not.
+
 
 ## Description of Filters
 
-### Filter by Sub-Account
+#### Types
+autoCheck is used for mutiselects that have a lot of values to choose from.
+
+lists are used for single value selects from finite answers
+
+checkboxes are used for multiselects with fewer values
+
+input is used when the criteria must match the user's desired value
+
+---
+
+### Filter by Sub-Account (type: 'autoCheck')
 Uses ```GET /api/v1/accounts/1/sub_accounts``` to get live list of subaccounts,
-Then ```GET /api/v1/accounts/1/courses/by_subaccounts[<subaccount>]``` to get the courses under the specified sub-account. 
+Then ```GET /api/v1/accounts/1/courses/by_subaccounts[]=<subaccount>``` to get the courses under the specified sub-account. 
 
-### Filter by Term
+### Filter by Term (type: 'list')
 Use ```GET /api/v1/accounts/1/terms``` to get live list of terms and their enrollment_term_id,
-Then ```GET /api/v1/accounts/1/courses?enrollment_term_id=<enrollment_term_id>``` to get a specific term.
+Then ```GET /api/v1/accounts/1/courses?enrollment_term_id[]=<enrollment_term_id>``` to get a specific term.
 
-### Filter by Course State
-Use ```GET /api/v1/accounts/1/courses/state[created, claimed, available, completed, deleted, all]```
+### Filter by Course State (type: 'checkbox')
+Use ```GET /api/v1/accounts/1/courses/state[]=created, claimed, available, completed, deleted, all```
 
-### Filter by Course Type
-Use ```GET /api/v1/accounts/1/courses/blueprint``` to get if blueprints
+### Filter by Course Type (type: 'checkbox')
+Use ```GET /api/v1/accounts/1/courses/blueprint=<true/false>``` to get if blueprints
+Use ```GET /api/v1/accounts/1/courses/blueprint_associated=<true/false>``` to get if has a blueprint
+Use ```GET /api/v1/accounts/1/courses/published=<true/false>``` to get if published
+Use ```GET /api/v1/accounts/1/courses/completed=<true/false>``` to get if completed
 
-### Filter by Teacher
-Use ```GET api/v1/accounts/1/users?include[]=email&role_filter_id=4``` to get live list of teachers along with their emails (in case of duplicates),
-Then ```GET /api/v1/accounts/1/courses/by_teachers?include[]=<name>&``` to get that teacher's courses.
+### Filter by Teacher (type: 'autoCheck')
+Use ```GET api/v1/accounts/1/users?&role_filter_id=4``` to get live list of teachers,
+Then ask the user which teacher to choose, take that teacher object's user_id.
+Then ```GET /api/v1/accounts/1/courses?by_teachers[]=<user_id>``` to get that teacher's courses.
 
-### Filter by Enrollment Types
-Use ```GET /api/v1/accounts/1/courses/enrollment_type[teacher, student, ta, observer, designer]```
+### Filter by Enrollment Type (type: 'checkbox')
+Use ```GET /api/v1/accounts/1/courses/enrollment_type[]=teacher, student, ta, observer, designer```
 
-### Filter by Course Status
+### Filter by Course String Value (type: 'input')
+Use  ```GET /api/v1/accounts/1/courses/search_term=<string>```
+
 
 ## TODO
-Figure out how to ensure no API call gets asked twice. Any function that makes an API call needs to be overwritten to something that just returns the result of the API call instead.
-```javascript
-function main () {
-
-var obj = {
-    key1: ()=>1,
-    key2: ()=>2,
-    keyRewrite: ()=> {
-        // this.keyRewrite = () => 'taco'
-        return 'meep'
-    },
-}
-
-console.log(obj.keyRewrite())
-var moop = obj.keyRewrite();
-obj.keyRewrite = () => moop+2
-console.log(obj.keyRewrite())
-
-}
-
-main();
-```
-
-Figure out how to dynamically make the API calls based on the answers received via inquirer. 
+Finish the Course State, Course Type, Teacher, Enrollment Type and String Value filters
