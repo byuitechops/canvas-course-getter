@@ -28,8 +28,10 @@
     "canvas-api-wrapper": "^3.3.5",
     "d3-dsv": "^1.1.1",
     "form-urlencoded": "^3.0.0",
+    "fuzzy": "^0.1.3",
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.0.1",
+    "inquirer-checkbox-plus-prompt": "^1.0.1",
     "p-limit": "^2.1.0",
     "query-string": "^6.4.0"
   },
